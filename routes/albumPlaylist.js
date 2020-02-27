@@ -37,7 +37,7 @@ router.post('/add', function(req, res) {
 		})
 })
 
-// PUT: Modify information of an specific AlbumPlaylist based on id
+// PUT: Modify information of a specific AlbumPlaylist based on id
 router.put('/update/:id', function(req, res) {
 	db.AlbumPlaylist.findById(req.params.id, function(err, albumPlaylist) {
 		if(!albumPlaylist) {
@@ -61,5 +61,18 @@ router.put('/update/:id', function(req, res) {
 		}
 	})
 })
+
+// DELETE: Delete a specific AlbumPlaylist based on id
+router.delete('/delete/:id', function(req, res) {
+	db.AlbumPlaylist.remove({
+		_id: req.params.id
+	}, function(err, albumPlaylist) {
+		if(err) {
+			console.log(err);
+		}
+		else {
+			res.json({ message: 'Successfully deleted' }); }
+	});
+}); 
 
 module.exports = router;
