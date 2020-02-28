@@ -11,6 +11,9 @@ router.get('/', function(req, res) {
 		else {
 			res.json(albumPlaylist);
 		}
+	}).populate({
+		path: 'songs',
+		model: db.Song
 	});
 })
 

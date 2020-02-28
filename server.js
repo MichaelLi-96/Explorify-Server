@@ -17,7 +17,7 @@ connection.once('open', function() {
 
 app.use('/songs', routes.song);
 app.use('/albumPlaylists', routes.albumPlaylist);
-
+app.use('/artists', routes.artist);
 
 app.listen(PORT, function() {
 	console.log("Server is running on Port: " + PORT);

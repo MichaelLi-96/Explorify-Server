@@ -9,9 +9,10 @@ const ArtistSchema = new Schema({
   imageUrl: {
   		type: String
   },
-  albums: {
-  		type: [AlbumPlaylist.schema]
-  }
+  albumPlaylists: [{
+    type: Schema.Types.ObjectId,
+    ref: 'AlbumPlaylist'
+  }]
 });
 
 const Artist = mongoose.model('artist', ArtistSchema);
