@@ -11,9 +11,6 @@ router.get('/', function(req, res) {
 		else {
 			res.json(albumPlaylist);
 		}
-	}).populate({
-		path: 'songs',
-		model: db.Song
 	});
 })
 
@@ -22,10 +19,7 @@ router.get('/:id', (function(req, res) {
 	let id = req.params.id;
 	db.AlbumPlaylist.findById(id, function(err, albumPlaylist) {
 		res.json(albumPlaylist);
-	}).populate({
-		path: 'songs',
-		model: db.Song
-	})
+	});
 }))
 
 // POST: Add an AlbumPlaylist to the database

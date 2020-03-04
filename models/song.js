@@ -1,12 +1,19 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const AlbumPlaylist = require('./albumPlaylist');
+const Artist = require('./artist');
 
 const songSchema = new Schema({
   name: {
    	type: String
   },
+  albumPlaylist: {
+    type: Schema.Types.ObjectId,
+    ref: 'AlbumPlaylist'
+  },
   artist: {
-  	type: String
+  	type: Schema.Types.ObjectId,
+    ref: 'Artist'
   },
   url: {
    	type: String

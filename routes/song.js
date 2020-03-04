@@ -19,7 +19,7 @@ router.get('/:id', (function(req, res) {
 	let id = req.params.id;
 	db.Song.findById(id, function(err, song) {
 		res.json(song);
-	})
+	});
 }))
 
 // POST: Add an song to the database
@@ -42,6 +42,7 @@ router.put('/update/:id', function(req, res) {
 		}
 		else {
 			song.name = req.body.name;
+			song.albumPlaylist = req.body.albumPlaylist;
 			song.artist = req.body.artist;
 			song.url = req.body.url;
 			song.imageUrl = req.body.imageUrl;
