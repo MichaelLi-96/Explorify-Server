@@ -23,6 +23,7 @@ app.use('/songs', routes.song);
 app.use('/albumPlaylists', routes.albumPlaylist);
 app.use('/artists', routes.artist);
 app.use('/users', routes.user);
+app.use('/auth', routes.auth);
 
 app.listen(PORT, function() {
 	console.log("Server is running on Port: " + PORT);

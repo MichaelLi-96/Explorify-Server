@@ -27,7 +27,7 @@ router.post('/add', function(req, res) {
 	let song = new db.Song(req.body);
 	song.save()
 		.then(song => {
-			res.status(200).json({'song': 'song added successfully'})
+			res.status(200).json({ 'msg': 'song added successfully' })
 		})
 		.catch(err => {
 			res.status(400).send('adding new song failed');
@@ -51,7 +51,7 @@ router.put('/update/:id', function(req, res) {
 
 			song.save()
 				.then(song => {
-					res.json('song updated');
+					res.json({ 'msg': 'song updated' });
 				})
 				.catch(err => {
 					res.status(400).send('update not possible');

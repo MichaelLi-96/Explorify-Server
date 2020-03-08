@@ -32,13 +32,13 @@ router.post('/add', function(req, res) {
 
 	// Simple validation
 	if(!email || !password || !name) {
-		return res.status(400).json({ msg: 'please enter all fields'});
+		return res.status(400).json({ 'msg': 'please enter all fields'});
 	}
 
 	// Check for existing user
 	db.User.findOne({ email })
 		.then(user => {
-			if(user) return res.status(400).json({ msg: 'user already exists'});
+			if(user) return res.status(400).json({ 'msg': 'user already exists'});
 
 			let newUser = new db.User(req.body);
 
@@ -91,7 +91,7 @@ router.put('/update/:id', function(req, res) {
 
 			user.save()
 				.then(user => {
-					res.json('user updated');
+					res.json({ 'msg': 'user updated' });
 				})
 				.catch(err => {
 					res.status(400).send('update not possible');
@@ -109,7 +109,7 @@ router.delete('/delete/:id', function(req, res) {
 			console.log(err);
 		}
 		else {
-			res.json({ message: 'Successfully deleted' }); }
+			res.json({ 'msg': 'user successfully deleted' }); }
 	});
 }); 
 
