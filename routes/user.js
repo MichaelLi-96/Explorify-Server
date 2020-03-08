@@ -59,12 +59,8 @@ router.post('/add', function(req, res) {
 									if(err) throw err;
 
 									res.status(200).json({
-										token,
-										user: {
-											id: user._id,
-											email: user.email,
-											name: user.name
-										}
+										jwtToken: token,
+										userId: user._id 
 									});
 								}
 							)
