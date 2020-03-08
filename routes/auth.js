@@ -25,7 +25,7 @@ router.get('/login', function(req, res) {
 					if(!isMatch) return res.status(400).json({ msg: 'invalid credentials'});
 
 					jwt.sign(
-						{ id: user._id },
+						{ userId: user._id },
 						config.get('jwtSecret'),
 						{ expiresIn: 3600 },
 						(err, token) => {
