@@ -27,7 +27,7 @@ router.post('/add', function(req, res) {
 	let artist = new db.Artist(req.body);
 	artist.save()
 		.then(artist => {
-			res.status(200).json({'msg': 'artist added successfully'});
+			res.status(200).json({ msg: 'artist added successfully' });
 		})
 		.catch(err => {
 			res.status(400).send('adding new artist failed');
@@ -47,7 +47,7 @@ router.put('/update/:id', function(req, res) {
 
 			artist.save()
 				.then(artist => {
-					res.json({ 'msg': 'artist updated' });
+					res.json({ msg: 'artist updated' });
 				})
 				.catch(err => {
 					res.status(400).send('update not possible');
@@ -65,7 +65,7 @@ router.delete('/delete/:id', function(req, res) {
 			console.log(err);
 		}
 		else {
-			res.json({ 'msg': 'artist successfully deleted' }); }
+			res.json({ msg: 'artist successfully deleted' }); }
 	});
 }); 
 

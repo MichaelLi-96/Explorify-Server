@@ -27,7 +27,7 @@ router.post('/add', function(req, res) {
 	let albumPlaylist = new db.AlbumPlaylist(req.body);
 	albumPlaylist.save()
 		.then(albumPlaylist => {
-			res.status(200).json({'msg': 'albumPlaylist added successfully'});
+			res.status(200).json({ msg: 'albumPlaylist added successfully'});
 		})
 		.catch(err => {
 			res.status(400).send('adding new albumPlaylist failed');
@@ -50,7 +50,7 @@ router.put('/update/:id', function(req, res) {
 
 			albumPlaylist.save()
 				.then(albumPlaylist => {
-					res.json({'msg': 'albumPlaylist updated'});
+					res.json({ msg : 'albumPlaylist updated'});
 				})
 				.catch(err => {
 					res.status(400).send('update not possible');
@@ -68,7 +68,7 @@ router.delete('/delete/:id', function(req, res) {
 			console.log(err);
 		}
 		else {
-			res.json({ 'msg': 'message successfully deleted' }); }
+			res.json({ msg: 'message successfully deleted' }); }
 	});
 }); 
 
