@@ -26,7 +26,7 @@ router.get('/:id', (function(req, res) {
 	});
 }))
 
-// POST: Add an User to the database
+// POST: Add an User to the database, returns a jwt that expires in 1 hr
 router.post('/add', function(req, res) {
 	const { email, password, name } = req.body;
 
@@ -50,7 +50,6 @@ router.post('/add', function(req, res) {
 
 					newUser.save()
 						.then(user => {
-
 							jwt.sign(
 								{ id: user._id },
 								config.get('jwtSecret'),
@@ -59,8 +58,7 @@ router.post('/add', function(req, res) {
 									if(err) throw err;
 
 									res.status(200).json({
-										jwtToken: token,
-										userId: user._id 
+										token: token
 									});
 								}
 							)
@@ -81,7 +79,15 @@ router.put('/update/:id', function(req, res) {
 		}
 		else {
 			user.email = req.body.email;
-			user.password = req.body.password;
+
+			// Create salt & hash password
+			bcrypt.genSalt(10, (err, salt) => {
+				bcrypt.hash(req.body.password, salt, (err, hash) => {
+					if(err) throw err;
+					user.password = hash;
+				});
+			})
+
 			user.name = req.body.name;
 			user.albumPlaylists = req.body.albumPlaylists;
 

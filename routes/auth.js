@@ -5,8 +5,8 @@ const bcrypt = require('bcryptjs');
 const config = require('config');
 const jwt = require('jsonwebtoken');
 
-// POST: Authenticate(Logging in) an User in the database
-router.post('/', function(req, res) {
+// GET: Authenticate(Logging in) an User in the database, return a jwt that expires in 1 hr
+router.get('/login', function(req, res) {
 	const { email, password } = req.body;
 
 	// Simple validation
@@ -30,10 +30,8 @@ router.post('/', function(req, res) {
 						{ expiresIn: 3600 },
 						(err, token) => {
 							if(err) throw err;
-
 							res.status(200).json({
-								jwtToken: token,
-								userId: user._id 
+								token: token
 							});
 						}
 					)
@@ -41,6 +39,20 @@ router.post('/', function(req, res) {
 				})
 
 		})
+})
+
+// GET: Decode a jwt, return the decoded information
+router.get('/decodeJwt', function(req, res) {
+	const { token } = req.body;
+
+	if(!token) return res.status(401).json({ msg: 'no token to decode' });
+
+	try {
+		const decoded = jwt.verify(token, config.get('jwtSecret'));
+		return res.status(200).json(decoded);
+	} catch(e) {
+		res.status(400).json({ meg: 'token is not valid or has expired' });
+	}
 })
 
 module.exports = router;
