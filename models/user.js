@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const AlbumPlaylist = require('./albumPlaylist');
 
 const userSchema = new Schema({
   email: {
@@ -7,22 +8,18 @@ const userSchema = new Schema({
     required: true,
     unique: true
   },
-  name: {
-    type: String,
-    required: true
-  },
   password: {
     type: String,
     required: true
   },
-  picture: {
+  name: {
     type: String,
-    default: "https://static.change.org/profile-img/default-user-profile.svg"
+    required: true
   },
-  birthday: {
-    type: Date,
-    default: Date.now,
-  }
+  albumPlaylists: [{
+    type: Schema.Types.ObjectId,
+    ref: 'AlbumPlaylist'
+  }]
 })
 
 const User = mongoose.model('user', userSchema);

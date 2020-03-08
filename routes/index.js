@@ -1,5 +1,6 @@
 module.exports = {
   song: require('./song.js'),
   albumPlaylist: require("./albumPlaylist.js"),
-  artist: require("./artist.js")
+  artist: require("./artist.js"),
+  user: require("./user.js")
 };

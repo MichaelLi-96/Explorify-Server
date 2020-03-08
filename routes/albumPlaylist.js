@@ -68,7 +68,7 @@ router.delete('/delete/:id', function(req, res) {
 			console.log(err);
 		}
 		else {
-			res.json({ message: 'Successfully deleted' }); }
+			res.json({ message: 'albumPlaylist successfully deleted' }); }
 	});
 }); 
 
