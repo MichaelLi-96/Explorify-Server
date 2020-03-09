@@ -27,7 +27,8 @@ router.post('/add', function(req, res) {
 	let albumPlaylist = new db.AlbumPlaylist(req.body);
 	albumPlaylist.save()
 		.then(albumPlaylist => {
-			res.status(200).json({ msg: 'albumPlaylist added successfully'});
+			return res.status(200).json({ msg: 'albumPlaylist added successfully',
+										  albumPlaylist: albumPlaylist});
 		})
 		.catch(err => {
 			res.status(400).send('adding new albumPlaylist failed');

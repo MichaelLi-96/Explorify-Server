@@ -5,8 +5,8 @@ const bcrypt = require('bcryptjs');
 const config = require('config');
 const jwt = require('jsonwebtoken');
 
-// GET: Authenticate(Logging in) an User in the database, return a jwt that expires in 1 hr
-router.get('/login', function(req, res) {
+// POST: Authenticate(Logging in) an User in the database, return a jwt that expires in 1 hr
+router.post('/login', function(req, res) {
 	const { email, password } = req.body;
 
 	// Simple validation
@@ -41,8 +41,8 @@ router.get('/login', function(req, res) {
 		})
 })
 
-// GET: Decode a jwt, return the decoded information
-router.get('/decodeJwt', function(req, res) {
+// POST: Decode a jwt, return the decoded information
+router.post('/decodeJwt', function(req, res) {
 	const { token } = req.body;
 
 	if(!token) return res.status(401).json({ msg: 'no token to decode' });

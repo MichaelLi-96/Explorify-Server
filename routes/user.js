@@ -32,13 +32,13 @@ router.post('/add', function(req, res) {
 
 	// Simple validation
 	if(!email || !password || !name) {
-		return res.status(400).json({ msg: 'please enter all fields'});
+		return res.status(400).json({ msg: 'Please enter all fields.'});
 	}
 
 	// Check for existing user
 	db.User.findOne({ email })
 		.then(user => {
-			if(user) return res.status(400).json({ msg: 'user already exists'});
+			if(user) return res.status(400).json({ msg: 'This email has already been used.' });
 
 			let newUser = new db.User(req.body);
 
@@ -64,7 +64,7 @@ router.post('/add', function(req, res) {
 							)
 						})
 						.catch(err => {
-							res.status(400).send('adding new user failed');
+							return res.status(400).json({ msg: 'Adding new user has failed.' });
 						})
 				});
 			})
