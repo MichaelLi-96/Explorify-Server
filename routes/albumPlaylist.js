@@ -43,7 +43,7 @@ router.put('/update/:id', function(req, res) {
 		}
 		else {
 			albumPlaylist.name = req.body.name;
-			albumPlaylist.isAlbum = req.body.artist;
+			albumPlaylist.isAlbum = req.body.isAlbum;
 			albumPlaylist.imageUrl = req.body.imageUrl;
 			albumPlaylist.artist = req.body.artist;
 			albumPlaylist.year = req.body.year;

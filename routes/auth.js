@@ -11,18 +11,18 @@ router.post('/login', function(req, res) {
 
 	// Simple validation
 	if(!email || !password) {
-		return res.status(400).json({ msg: 'please enter all fields'});
+		return res.status(400).json({ msg: 'Please enter all fields.' });
 	}
 
 	// Check for existing user
 	db.User.findOne({ email })
 		.then(user => {
-			if(!user) return res.status(400).json({ msg: 'user does not exist'});
+			if(!user) return res.status(400).json({ msg: 'This user does not exist.'});
 
 			// Validate password
 			bcrypt.compare(password, user.password)
 				.then(isMatch => {
-					if(!isMatch) return res.status(400).json({ msg: 'invalid credentials'});
+					if(!isMatch) return res.status(400).json({ msg: 'Incorrect password.'});
 
 					jwt.sign(
 						{ userId: user._id },
@@ -45,13 +45,13 @@ router.post('/login', function(req, res) {
 router.post('/decodeJwt', function(req, res) {
 	const { token } = req.body;
 
-	if(!token) return res.status(401).json({ msg: 'no token to decode' });
+	if(!token) return res.status(401).json({ msg: 'No token to decode.' });
 
 	try {
 		const decoded = jwt.verify(token, config.get('jwtSecret'));
 		return res.status(200).json(decoded);
 	} catch(e) {
-		res.status(400).json({ meg: 'token is not valid or has expired' });
+		res.status(400).json({ msg: 'Token is not valid or has expired.' });
 	}
 })
 
