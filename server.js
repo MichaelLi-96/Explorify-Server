@@ -8,7 +8,8 @@ const config = require('config');
 const PORT = process.env.PORT || 4000;
 
 //DB config
-const db = config.get('mongoURI');
+const serverDb = config.get('serverMongoURI');
+const localDb = config.get('localMongoURI');
 
 app.use(bodyParser.json());
 const corsOptions = {
@@ -18,7 +19,7 @@ const corsOptions = {
 }
 app.use(cors(corsOptions));
 
-mongoose.connect( process.env.MONGODB_URI || db, { useNewUrlParser: true });
+mongoose.connect( serverDb || localDb, { useNewUrlParser: true });
 // const connection = mongoose.connection;
 // connection.once('open', function() {
 // 	console.log("MongoDB database connection established successfully");
