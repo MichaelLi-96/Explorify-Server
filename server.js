@@ -5,19 +5,26 @@ const app = express();
 const mongoose = require('mongoose');
 const routes = require('./routes');
 const config = require('config');
-const PORT = 4000;
+const PORT = process.env.PORT || 4000;
 
 //DB config
 const db = config.get('mongoURI');
 
-app.use(cors());
 app.use(bodyParser.json());
+const corsOptions = {
+  origin: ['https://explorifyy.herokuapp.com'],
+  credentials: true,
+  optionsSuccessStatus: 200
+}
+app.use(cors(corsOptions));
 
-mongoose.connect(db, { useNewUrlParser: true });
-const connection = mongoose.connection;
-connection.once('open', function() {
-	console.log("MongoDB database connection established successfully");
-})
+mongoose.connect( process.env.MONGODB_URI || db, { useNewUrlParser: true });
+// const connection = mongoose.connection;
+// connection.once('open', function() {
+// 	console.log("MongoDB database connection established successfully");
+// })
+
+app.get('/', (req,res) => res.send(`<h1>Explorify server is running...</h1>`));
 
 app.use('/songs', routes.song);
 app.use('/albumPlaylists', routes.albumPlaylist);
