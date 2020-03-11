@@ -1,17 +1,17 @@
 {
   "name": "server",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Explorify server",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/MichaelLi-96/Explorify-Server.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Michael Li",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/MichaelLi-96/Explorify-Server/issues"
