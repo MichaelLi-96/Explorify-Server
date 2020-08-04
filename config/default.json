@@ -1,5 +1,5 @@
 {
-	"serverMongoURI": "mongodb://explorifyuser:password123@ds119788.mlab.com:19788/heroku_qrrzpzpc",
+	"serverMongoURI": "mongodb+srv://explorifyuser:password123@heroku-qrrzpzpc.ww3ex.mongodb.net/heroku_qrrzpzpc?retryWrites=true&w=majority",
 	"localMongoURI": "mongodb://127.0.0.1:27017/explorify",
 	"jwtSecret": "explorify_myJwtSecret"
 }
