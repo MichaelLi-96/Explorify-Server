@@ -1,5 +1,5 @@
 {
-	"serverMongoURI": "mongodb+srv://explorifyuser:password123@heroku-qrrzpzpc.ww3ex.mongodb.net/heroku_qrrzpzpc?retryWrites=true&w=majority",
-	"localMongoURI": "mongodb://127.0.0.1:27017/explorify",
-	"jwtSecret": "explorify_myJwtSecret"
+  "serverMongoURI": "mongodb+srv://explorifyuser:password123@heroku-qrrzpzpc.ww3ex.mongodb.net/heroku_qrrzpzpc?retryWrites=true&w=majority",
+  "localMongoURI": "mongodb://127.0.0.1:27017/explorify",
+  "jwtSecret": "explorify_myJwtSecret"
 }

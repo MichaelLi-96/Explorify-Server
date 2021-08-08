@@ -5,18 +5,18 @@ const Artist = require('./artist');
 
 const songSchema = new Schema({
   name: {
-   	type: String
+    type: String
   },
   albumPlaylist: {
     type: Schema.Types.ObjectId,
     ref: 'AlbumPlaylist'
   },
   artist: {
-  	type: Schema.Types.ObjectId,
+    type: Schema.Types.ObjectId,
     ref: 'Artist'
   },
   url: {
-   	type: String
+    type: String
   },
   imageUrl: {
     type: String
@@ -25,7 +25,7 @@ const songSchema = new Schema({
     type: String
   },
   plays: {
-  	type: Number
+    type: Number
   }
 });
 

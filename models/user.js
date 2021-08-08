@@ -16,11 +16,13 @@ const userSchema = new Schema({
     type: String,
     required: true
   },
-  albumPlaylists: [{
-    type: Schema.Types.ObjectId,
-    ref: 'AlbumPlaylist'
-  }]
-})
+  albumPlaylists: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'AlbumPlaylist'
+    }
+  ]
+});
 
 const User = mongoose.model('user', userSchema);
 module.exports = User;

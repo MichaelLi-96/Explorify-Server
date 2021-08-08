@@ -4,25 +4,27 @@ const Song = require('./song');
 
 const albumPlaylistSchema = new Schema({
   name: {
-  	type: String
+    type: String
   },
   isAlbum: {
-  	type: Boolean,
+    type: Boolean,
     default: true
   },
   imageUrl: {
-  	type: String
+    type: String
   },
   artist: {
-  	type: String
+    type: String
   },
   year: {
-  	type: String
+    type: String
   },
-  songs: [{
-  	type: Schema.Types.ObjectId,
-  	ref: 'Song'
-  }]
+  songs: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Song'
+    }
+  ]
 });
 
 const AlbumPlaylist = mongoose.model('albumPlaylist', albumPlaylistSchema);

@@ -4,15 +4,17 @@ const AlbumPlaylist = require('./albumPlaylist');
 
 const ArtistSchema = new Schema({
   name: {
-   		type: String
+    type: String
   },
   imageUrl: {
-  		type: String
+    type: String
   },
-  albumPlaylists: [{
-    type: Schema.Types.ObjectId,
-    ref: 'AlbumPlaylist'
-  }]
+  albumPlaylists: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'AlbumPlaylist'
+    }
+  ]
 });
 
 const Artist = mongoose.model('artist', ArtistSchema);
